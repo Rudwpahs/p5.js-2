@@ -1,0 +1,11 @@
+:root { color-scheme: dark; --ink:#11131b; --paper:#f0f4ff; --muted:#9ca7c2; --cyan:#83ecff; --violet:#b8a2ff; }
+* { box-sizing:border-box; }
+body { min-height:100vh; margin:0; display:grid; place-items:center; background:radial-gradient(circle at 50% 35%, #364c85, transparent 40%), #11131b; color:var(--paper); font-family:Inter, ui-sans-serif, system-ui, sans-serif; }
+main { width:min(760px, calc(100% - 40px)); padding:48px 0 70px; text-align:center; }
+.eyebrow { color:var(--cyan); font:800 10px monospace; letter-spacing:.18em; }
+h1 { margin:20px 0 16px; font-size:clamp(48px, 10vw, 92px); line-height:.86; letter-spacing:-.08em; }
+h1 em { color:var(--violet); font-style:normal; }
+.copy { max-width:470px; margin:0 auto 34px; color:var(--muted); font-size:14px; line-height:1.65; }
+#canvas-holder { min-height:360px; display:grid; place-items:center; padding:20px; border:1px solid rgba(240,244,255,.18); border-radius:28px; background:rgba(255,255,255,.07); box-shadow:0 28px 80px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.15); backdrop-filter:blur(20px); }
+#canvas-holder canvas { width:min(100%, 360px) !important; height:auto !important; border-radius:50%; box-shadow:0 0 60px rgba(131,236,255,.16); }
+.hint { margin:18px 0 0; color:rgba(240,244,255,.45); font:11px monospace; }
