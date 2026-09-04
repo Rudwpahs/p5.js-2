@@ -10,6 +10,19 @@ function draw() {
   background(153,204,255);
   translate(width / 2, height / 2);
 
+  // Draw the moving clouds first so they stay behind the watch face and hands.
+  push();
+  translate(-width / 2, -height / 2);
+  drawCloud(cloudX % width, 50, 50, 20, 10);
+  drawCloud((cloudX % width) - width, 200, 100, 40, 20);
+  drawCloud((cloudX % width) + width, 200, 200, 30, 15);
+  pop();
+
+  noFill();
+  stroke(255, 245);
+  strokeWeight(7);
+  ellipse(0, 0, 330, 330);
+
   angleSec = map(second(), 0, 60, 0, 360) - 90;
   angleMin = map(minute() + norm(second(), 0, 60), 0, 60, 0, 360) - 90;
   angleHour = map(hour() + norm(minute(), 0, 60), 0, 12, 0, 360) - 90;
@@ -48,11 +61,7 @@ function draw() {
   fill(150);
   ellipse(0, 0, 8, 8);
 
-  // 구름
   cloudX += 0.1;
-  drawCloud(cloudX % width, 50, 50, 20, 10);
-  drawCloud((cloudX % width) - width, 200, 100, 40, 20);
-  drawCloud((cloudX % width) + width, 200, 200, 30, 15);
 }
 
 function drawCloud(x, y, r, numCircles, circleSize) {
