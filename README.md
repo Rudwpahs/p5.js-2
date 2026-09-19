@@ -1,38 +1,52 @@
-# Smart Watch / p5.js Study
+<div align="center">
 
-p5.js로 시계 화면을 직접 그려보면서 시간 계산과 레이어 순서를 익히기 위해 만든 작은 스케치입니다. 현재 시각을 아날로그 시계로 보여주고, 주변에는 날씨처럼 움직이는 구름을 반복해서 그립니다.
+# ⌚ Smart Watch / p5.js Study
 
-이 저장소 역시 제품 개발용이라기보다 **p5.js의 좌표·각도·렌더링 순서를 익혔던 학습 기록**으로 남겨두는 프로젝트입니다.
+### Time, angles, layers — learned by drawing a clock.
 
-## 어떻게 그리나
+<p>
+  <img alt="p5.js" src="https://img.shields.io/badge/p5.js-creative_coding-ED225D?logo=p5dotjs&logoColor=white">
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000">
+  <img alt="Archive" src="https://img.shields.io/badge/status-learning_archive-8b949e">
+</p>
 
-```text
-현재 시·분·초 읽기
-      ↓
-각 값을 0~360° 각도로 변환
-      ↓
-배경과 구름 레이어 먼저 그림
-      ↓
-시계판과 눈금 그림
-      ↓
-시침·분침·초침을 계산된 각도로 회전
-      ↓
-다음 프레임에서 다시 계산
+[Render Flow](#render-flow) · [What I learned](#what-i-learned) · [Run](#run)
+
+</div>
+
+---
+
+p5.js로 아날로그 시계와 움직이는 구름을 직접 그리면서 **시간 계산, 회전 각도, 프레임 animation, layer order**를 익힌 작은 스케치입니다.
+
+## Render flow
+
+```mermaid
+flowchart LR
+    A[현재 시 · 분 · 초] --> B[0–360° 각도 변환]
+    B --> C[배경 + 구름]
+    C --> D[시계판 + 눈금]
+    D --> E[시침 · 분침 · 초침 회전]
+    E --> F[Next frame]
+    F --> A
 ```
 
-예전에 구름이 시계를 덮는 문제가 있었는데, 구름을 별도 좌표계에서 먼저 렌더링하고 마지막에 시계판과 바늘을 그리도록 순서를 바꿨습니다. 이 프로젝트에서 가장 중요한 건 계산 자체보다 **그리는 순서가 화면 결과를 바꾼다**는 점을 직접 확인한 것입니다.
+## What I learned
 
-## 실행
+예전에 구름이 시계를 덮는 문제가 있었습니다. 계산 오류가 아니라 **그리는 순서**의 문제였습니다.
+
+```text
+Wrong: clock → clouds     = clouds cover the clock
+Right: clouds → clock     = clock stays readable
+```
+
+구름을 먼저 렌더링하고 마지막에 시계판과 바늘을 그리도록 바꾸면서, canvas에서는 **layer order가 최종 화면을 결정한다**는 걸 직접 확인했습니다.
+
+## Run
 
 `index.html`을 브라우저에서 열면 바로 실행됩니다.
 
-## 기술
+## Stack
 
-- p5.js
-- JavaScript
-- 실시간 시각 계산
-- 프레임 기반 애니메이션
+`p5.js` · JavaScript · real-time clock · frame animation
 
-## 상태
-
-현재는 **learning archive**로 유지합니다. 기능을 억지로 현대화하기보다, 처음 만든 구조와 배운 내용을 알아볼 수 있게 보존하는 쪽이 이 저장소의 목적에 맞습니다.
+> **Learning archive** — 기능을 억지로 현대화하기보다 처음 만든 구조와 배운 내용을 보존합니다.
