@@ -1,5 +1,32 @@
 # Smart Watch / p5.js Study
 
-An interactive local-time clock and weather-loop sketch.
+p5.js로 시계 화면을 직접 그려보면서 시간 계산과 레이어 순서를 익히기 위해 만든 작은 스케치입니다. 현재 시각을 아날로그 시계로 보여주고, 주변에는 날씨처럼 움직이는 구름을 반복해서 그립니다.
 
-Open `index.html` in a browser to run it. The original bug where clouds could cover the clock is fixed by rendering clouds in a separate translated layer before the watch face and hands.
+## 어떻게 그리나
+
+```text
+현재 시·분·초 읽기
+      ↓
+각 값을 0~360° 각도로 변환
+      ↓
+배경과 구름 레이어 먼저 그림
+      ↓
+시계판과 눈금 그림
+      ↓
+시침·분침·초침을 계산된 각도로 회전
+      ↓
+다음 프레임에서 다시 계산
+```
+
+예전에 구름이 시계를 덮는 문제가 있었는데, 구름을 별도 좌표계에서 먼저 렌더링하고 마지막에 시계판과 바늘을 그리도록 순서를 바꿨습니다. 이 프로젝트에서 가장 중요한 건 계산 자체보다 **그리는 순서가 화면 결과를 바꾼다**는 점을 직접 확인한 것입니다.
+
+## 실행
+
+`index.html`을 브라우저에서 열면 바로 실행됩니다.
+
+## 기술
+
+- p5.js
+- JavaScript
+- 실시간 시각 계산
+- 프레임 기반 애니메이션
